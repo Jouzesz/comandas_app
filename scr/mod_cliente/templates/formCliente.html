@@ -25,40 +25,40 @@
     {% block content %}
 
 <div class="container">
-    <h2>Cadastro de Clientes</h2>
-    <form id="employee-registration-form">
-        <div class="form-group">
-            <label for="idCliente">ID do Cliente:</label>
-            <input type="text" class="form-control" id="idCliente" required>
-        </div>
-        <div class="form-group">
-            <label for="nome">Nome:</label>
-            <input type="text" class="form-control" id="nome" required>
-        </div>
-        <div class="form-group">
-            <label for="cpf">CPF:</label>
-            <input type="text" class="form-control" id="cpf" required>
-        </div>
-        <div class="form-group">
-            <label for="telefone">Telefone:</label>
-            <input type="text" class="form-control" id="telefone" required>
-        </div>
-        <div class="form-group">
-            <label for="compraFiado">Compra Fiado:</label>
-            <select class="form-control" id="compraFiado" required>
-                <option value="sim">Sim</option>
-                <option value="nao">Não</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="diaFiado">Dia Fiado:</label>
-            <input type="text" class="form-control" id="diaFiado" required>
-        </div>
-        <div class="form-group">
-            <label for="senha">Senha:</label>
-            <input type="password" class="form-control" id="senha" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    <form name="formAdicionar" id="formAdicionar" action="url_forl('cliente.insert')" method="POST" class="mt-5">
+        <h2>Cadastro de Clientes</h2>
+            <div class="form-group">
+                <label for="id_cliente">ID do Cliente:</label>
+                <input type="text" class="form-control" id="id_cliente" required>
+            </div>
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" class="form-control" id="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="cpf">CPF:</label>
+                <input type="text" class="form-control" id="cpf" required>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="text" class="form-control" id="telefone" required>
+            </div>
+            <div class="form-group">
+                <label for="compra_fiado">Compra Fiado:</label>
+                <select class="form-control" id="compra_fiado" required>
+                    <option value="sim">Sim</option>
+                    <option value="nao">Não</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="dia_fiado">Dia Fiado:</label>
+                <input type="text" class="form-control" id="dia_fiado" required>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha:</label>
+                <input type="password" class="form-control" id="senha" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
 </div>
 

@@ -64,17 +64,21 @@
             </tr>
         </thead>
         <tbody>
+            {% if result %}
+            {% for row in result %}
             <tr>
-                <th scope="row">1</th>
-                <td>Nome do Funcionário</td>
-                <td>123456</td>
-                <td>123.456.789-00</td>
-                <td>(12) 34567-8901</td>
-                <td>Administrador</td>
-                <td>********</td>
+                <th scope="row">{{ row['id_funcionario'] }}</th>
+                <td>{{ row['nome'] }}</td>
+                <td>{{ row['matricula'] }}</td>
+                <td>{{ row['cpf'] }}</td>
+                <td>{{ row['telefone'] }}</td>
+                <td>{{ row['grupo'] }}</td>
+                <td>{{ row['senha'] }}</td>
                 <td><i class="fas fa-edit"></i></td>
                 <td><i class="fas fa-trash"></i></td>
             </tr>
+            {% endfor %}
+            {% endif %}
         </tbody>
     </table>
     {% endblock %}
