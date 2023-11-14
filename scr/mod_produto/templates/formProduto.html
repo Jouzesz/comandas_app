@@ -16,80 +16,59 @@
         }
     </style>
 </head>
+
 <body>
-    <form name="formAdicionar" action="{{ url_for('produto.insert') }}" method="POST" enctype="multipart/form-data">
-        <div class="container">
-            <h2>Cadastro de Produtos</h2>
-            <form id="product-registration-form">
-                <div class="form-group">
-                    <input type="text" name="id" id="id" value="" placeholder="ID" readonly>
-                    <label for="id_produto">Código:</label>
+    <div class="container">
+        <div class="p-4 bg-light border rounded">
+          <h1 class="mb-4">Cadastro de Produto</h1>
+          <div class="form-group row">
+            <form name="formAdicionarProduto" id="formAdicionarProduto" action="{{ url_for('produto.insert') }}" method="POST" enctype="multipart/form-data">
+              <div class="form-group row">
+      
+                <label for="id" class="col-sm-2 col-form-label">Código</label>
+                <div class="col-sm-2">
+                  <input type="text" name="id" id="id" value="0" placeholder="Código" readonly class="form-control">
                 </div>
-                <div class="form-group">
-                    <input type="text" name="nome" id="nome" value="" placeholder="Nome do Produto" autofocus required>
-                    <label for="nome">Nome do Produto :</label>
+      
+              </div>
+              <div class="form-group row">
+      
+                <label for="nome" class="col-sm-2 col-form-label">Nome</label>
+                <div class="col-sm-4">
+                  <input type="text" name="nome" id="nome" value="" placeholder="Nome" maxlength="100" autofocus required
+                    class="form-control">
                 </div>
-                <div class="form-group">
-                    <textarea name="descricao" id="descricao" placeholder="Descrição do Produto" required></textarea>
-                    <label for="descricao">Descrição do Produto :</label>
+      
+                <label for="foto" class="col-sm-2 col-form-label">Foto</label>
+                <div class="col-sm-4">
+                  <input type="file" name="foto" id="foto" accept="image/*" class="form-control-file">
                 </div>
-                <div class="form-group">
-                    <input type="number" name="valor_unitario" id="valor_unitario" value="" required>
-                    <label for="valor_unitario">Valor:</label>
+      
+              </div>
+              <div class="form-group row">
+      
+                <label for="descricao" class="col-sm-2 col-form-label">Descrição</label>
+                <div class="col-sm-4">
+                  <textarea name="descricao" id="descricao" rows="4" placeholder="Descrição do Produto" class="form-control"
+                    required></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="foto">Foto:</label>
-                    <input type="file" name="foto" class="form-control-file" id="foto" accept="image/*" >
+      
+                <label for="valor" class="col-sm-2 col-form-label">Valor Unitário</label>
+                <div class="col-sm-4">
+                  <input type="number" step="0.01" min="0" name="valor_unitario" id="valor_unitario" value="" placeholder="Valor (R$)" required
+                    class="form-control">
                 </div>
-                <button type="submit" name="salvaProdutoDB" class="btn btn-primary">Cadastrar</button>
+      
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-4 offset-sm-2">
+                  <button type='submit' name='salvaProdutoDB' id='salvaProdutoDB' class="btn btn-primary"><i
+                      class='fas fa-save'></i> Salvar</button>
+                </div>
+              </div>
             </form>
-        
-            <!-- Visualização da imagem do produto -->
-            <div class="mt-4">
-                <h4>Imagem de Produto</h4>
-                <img id="preview" class="product-image" alt="Imagem do Produto" style="display: none;">
-            </div>
+          </div>
         </div>
-    </form>
-
-<script>
-    // Atualizar a visualização da imagem do produto quando o usuário selecionar uma imagem
-    $('#foto').change(function () {
-        var input = this;
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#preview').attr('src', e.target.result);
-                $('#preview').css('display', 'block');
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    });
-
-    // Validar o formulário
-    $('#product-registration-form').submit(function (e) {
-        e.preventDefault();
-        var idProduto = $('#idProduto').val();
-        var nome = $('#nome').val();
-        var descricao = $('#descricao').val();
-        var valorUnitario = $('#valorUnitario').val();
-        var foto = $('#foto').val();
-
-        // Realize validações adicionais aqui, incluindo a validação da imagem, se necessário
-
-        // Se tudo estiver válido, você pode enviar o formulário para o servidor
-        console.log('ID do Produto: ' + idProduto);
-        console.log('Nome: ' + nome);
-        console.log('Descrição: ' + descricao);
-        console.log('Valor Unitário: R$' + valorUnitario);
-        console.log('Foto: ' + foto);
-
-        // Limpar os campos após o envio
-        $('#product-registration-form')[0].reset();
-        $('#preview').css('display', 'none');
-    });
-</script>
+      </div>
 </body>
 </html>

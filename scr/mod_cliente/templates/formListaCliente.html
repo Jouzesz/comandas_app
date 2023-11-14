@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Clientes</title>
+    <title>Funcionários</title>
 
     <style>
         /* Estilo para a tabela */
@@ -22,7 +22,7 @@
             background-color: #f5f5f5;
         }
 
-        /* Estilo para o botão "Novo Funcionário" */
+        /* Estilo para o botão "Cliente" */
         .btn-novo-cliente {
             background-color: #007bff;
             color: white;
@@ -44,9 +44,9 @@
     {% block title %}Clientes{% endblock %}
 
     {% block content %}
-    <form action="{{ url_for('cliente.formListaCliente') }}" method="POST">
+    <form action="{{ url_for('cliente.formCliente') }}" method="POST">
         <h1>Clientes</h1>
-        <button type="submit" name="formNovo" class="btn-novo-cliente">Novo Cliente</button>
+        <button type="submit" name="formNovo" class="btn-novo-cliente">Cadastrar cliente</button>
     </form>
 
     <table class="table table-striped table-bordered">
@@ -57,7 +57,7 @@
                 <th scope="col">CPF</th>
                 <th scope="col">Telefone</th>
                 <th scope="col">Compra fiado</th>
-                <th scope="col">Dia fiado</th>
+                <th scope="col">Data fiado</th>
                 <th scope="col">Senha</th>
             </tr>
         </thead>
@@ -65,13 +65,13 @@
             {% if result %}
             {% for row in result %}
             <tr>
-                <th scope="row">{{ row['id_cliente'] }}</th>
-                <td>{{ row['nome'] }}</td>
-                <td>{{ row['cpf'] }}</td>
-                <td>{{ row['telefone'] }}</td>
-                <td>{{ row['compra_fiado'] }}</td>
-                <td>{{ row['dia_fiado'] }}</td>
-                <td>{{ row['senha'] }}</td>
+                <th scope="row"> {{ row['id_cliente'] }}</th>
+                <td> {{ row['nome'] }}</td>
+                <td> {{ row['cpf'] }}</td>
+                <td> {{ row['telefone'] }}</td>
+                <td> {{ row['compra_fiado'] }}</td>
+                <td> {{ row['dia_fiado'] }}</td>
+                <td> {{ row['senha'] }}</td>
                 <td><i class="fas fa-edit"></i></td>
                 <td><i class="fas fa-trash"></i></td>
             </tr>
@@ -79,6 +79,9 @@
             {% endif %}
         </tbody>
     </table>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     {% endblock %}
 </body>
 

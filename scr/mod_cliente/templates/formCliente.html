@@ -4,12 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Clientes</title>
-    
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/imask"></script>
-
     <style>
         .container {
             margin-top: 20px;
@@ -28,35 +22,35 @@
     <form name="formAdicionar" id="formAdicionar" action="url_forl('cliente.insert')" method="POST" class="mt-5">
         <h2>Cadastro de Clientes</h2>
             <div class="form-group">
-                <label for="id_cliente">ID do Cliente:</label>
-                <input type="text" class="form-control" id="id_cliente" required>
+                <label for="id">ID do Cliente:</label>
+                <input type="text" name="id" id="id" value="0" placeholder="Código" readonly class="form-control">
             </div>
             <div class="form-group">
                 <label for="nome">Nome:</label>
-                <input type="text" class="form-control" id="nome" required>
+                <input type="text" name="nome" id="nome" value="" placeholder="Nome" maxlength="100" autofocus required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="dia_fiado">Dia fiado:</label>
+                <input type="text" name="dia_fiado" id="dia_fiado" value="" placeholder="10" maxlength="100" autofocus required class="form-control">
             </div>
             <div class="form-group">
                 <label for="cpf">CPF:</label>
-                <input type="text" class="form-control" id="cpf" required>
-            </div>
-            <div class="form-group">
-                <label for="telefone">Telefone:</label>
-                <input type="text" class="form-control" id="telefone" required>
+                <input type="text" name="cpf" id="cpf" value="" placeholder="CPF" maxlength="15" required class="form-control">
             </div>
             <div class="form-group">
                 <label for="compra_fiado">Compra Fiado:</label>
-                <select class="form-control" id="compra_fiado" required>
-                    <option value="sim">Sim</option>
-                    <option value="nao">Não</option>
-                </select>
+                <select name="compra_fiado" id="compra_fiado" aria-label="Compra Fiado" class="form-control" required>
+                    <option value=0 >Sim</option>
+                    <option value=1 >Não</option>
+                  </select>
             </div>
             <div class="form-group">
-                <label for="dia_fiado">Dia Fiado:</label>
-                <input type="text" class="form-control" id="dia_fiado" required>
+                <label for="telefone">Telefone:</label>
+                <input type="tel" name="telefone" id="telefone" value="" placeholder="Telefone" maxlength="15" required class="form-control">
             </div>
             <div class="form-group">
                 <label for="senha">Senha:</label>
-                <input type="password" class="form-control" id="senha" required>
+                <input type="password" name="senha" id="senha" value="" placeholder="Senha" required class="form-control">
             </div>
             <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
@@ -66,32 +60,10 @@
     // Aplicar máscaras aos campos
     var cpfMask = new IMask(document.getElementById('cpf'), { mask: '000.000.000-00' });
     var telMask = new IMask(document.getElementById('telefone'), { mask: '(00) 00000-0000' });
-    var diaFiadoMask = new IMask(document.getElementById('diaFiado'), { mask: '00/00/0000' });
+    var diaFiadoMask = new IMask(document.getElementById('dia_fiado'), { mask: '00/00/0000' });
 
-    // Validar o formulário
-    $('#employee-registration-form').submit(function (e) {
-        e.preventDefault();
-        var idCliente = $('#idCliente').val();
-        var nome = $('#nome').val();
-        var cpf = cpfMask.unmaskedValue;
-        var telefone = telMask.unmaskedValue;
-        var compraFiado = $('#compraFiado').val();
-        var diaFiado = diaFiadoMask.unmaskedValue;
-        var senha = $('#senha').val();
-
-
-        // Se tudo estiver válido, você pode enviar o formulário para o servidor
-        console.log('ID do Cliente: ' + idCliente);
-        console.log('Nome: ' + nome);
-        console.log('CPF: ' + cpf);
-        console.log('Telefone: ' + telefone);
-        console.log('Compra Fiado: ' + compraFiado);
-        console.log('Dia Fiado: ' + diaFiado);
-        console.log('Senha: ' + senha);
-
-        // Limpar os campos após o envio
-        $('#employee-registration-form')[0].reset();
-    });
+    // Limpar os campos após o envio
+    //$('#employee-registration-form')[0].reset();
 </script>
 {% endblock %}
 </body>
