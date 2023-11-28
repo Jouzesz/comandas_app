@@ -12,15 +12,18 @@
 
     {% extends "base.html" %}
 
-    {% block title %}Funcionário{% endblock %}
+    {% block title %}Index{% endblock %}
 
     {% block content %}
-    <h1>Home</h1>
-    <p class="important">Seja bem vindo!</p>
-
-
-    </ul>
-
+    <div class="jumbotron">
+        <div class="custom-border">
+          <h1 class="display-2">
+            {% if 'login' in session %}
+              Bem-vindo <b>{{ session['login'] }}</b>
+              Você é um <b>{{session['grupo'] }}</b>
+            {% endif %}</h1>
+        </div>
+    </div>
     {% endblock %}
 </body>
 
